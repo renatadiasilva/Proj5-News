@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+  <xs:element name="report">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="metric_data"/>
+      </xs:sequence>
+      <xs:attribute name="timestamp" use="required" type="xs:integer"/>
+      <xs:attribute name="timezone" use="required" type="xs:NCName"/>
+      <xs:attribute name="version" use="required" type="xs:decimal"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="metric_data">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="metric_name"/>
+        <xs:element ref="timestamp"/>
+        <xs:element ref="value"/>
+        <xs:element ref="type"/>
+        <xs:element ref="units"/>
+        <xs:element ref="spoof"/>
+        <xs:element ref="direction"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="metric_name" type="xs:NCName"/>
+  <xs:element name="timestamp" type="xs:integer"/>
+  <xs:element name="value" type="xs:decimal"/>
+  <xs:element name="type" type="xs:NCName"/>
+  <xs:element name="units" type="xs:NCName"/>
+  <xs:element name="spoof" type="xs:string"/>
+  <xs:element name="direction" type="xs:string"/>
+</xs:schema>
