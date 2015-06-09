@@ -3,9 +3,20 @@
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html">
 
 <h:head>
-	<title>Facelets Hello World</title>
+	<title>Proj5-CNN</title>
 </h:head>
 <h:body>
-	<h1>Hello World!</h1>
+
+	<h1>Hello CNN!</h1>
+
+	<h:form>
+	<h:commandButton action="#{teste.demo()}" value="DO IT!!" />
+	
+	<p>#{teste.cnn}</p>
+	
+	<p>#{teste.rep}</p>
+
+	</h:form>
+	
 </h:body>
 </html>

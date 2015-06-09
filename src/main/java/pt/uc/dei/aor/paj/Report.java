@@ -87,6 +87,10 @@ public class Report {
      * 
      */
     
+    public Report() {
+    	
+    }
+    
     public Report(List<MetricData> metricData, BigInteger timestamp,
  			String timezone, BigDecimal version) {
  		super();

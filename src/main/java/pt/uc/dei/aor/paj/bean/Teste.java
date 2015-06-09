@@ -1,23 +1,33 @@
 package pt.uc.dei.aor.paj.bean;
 
-import java.io.File;
-import java.io.IOException;
-import java.math.BigDecimal;
-import java.math.BigInteger;
-import java.util.ArrayList;
-import java.util.List;
-
+import javax.enterprise.context.SessionScoped;
+//import javax.inject.Inject;
+import javax.inject.Named;
 import javax.xml.bind.JAXBException;
 
 import pt.uc.dei.aor.paj.MetricData;
 import pt.uc.dei.aor.paj.Report;
 import pt.uc.dei.aor.paj.xml.JAXBXMLHandler;
 
-public class JAXBDemo {
+import java.io.File;
+import java.io.IOException;
+import java.io.Serializable;
+import java.math.BigDecimal;
+import java.math.BigInteger;
+import java.util.ArrayList;
+import java.util.List;
 
+@Named
+@SessionScoped
+public class Teste implements Serializable {
+	
+	private static final long serialVersionUID = -5381236051617076780L;
+	
+	private String cnn;
+	
 	private Report rep;
 	
-	public JAXBDemo() {
+	public Teste() {
 		MetricData metricD = new MetricData();
 		metricD.setMetricName("cpus_available");
 		metricD.setTimestamp(BigInteger.valueOf(Long.parseLong("1308046204003")));
@@ -37,8 +47,9 @@ public class JAXBDemo {
 		
 	}
 	
-	public void demo() {
+	public String demo() {
 
+		cnn = "CNN!!!";
 		try {
 			//Marshalling: Writing Java object to XML file
 			JAXBXMLHandler.marshal(rep, new File("report.xml"));
@@ -51,5 +62,29 @@ public class JAXBDemo {
 		} catch (JAXBException e) {
 			e.printStackTrace();
 		}
+		
+		return null;
 	}    
+
+	public String doSomething() {
+		cnn = "CNN!!!";
+		return null;
+	}
+
+	public String getCnn() {
+		return cnn;
+	}
+
+	public void setCnn(String cnn) {
+		this.cnn = cnn;
+	}
+
+	public Report getRep() {
+		return rep;
+	}
+
+	public void setRep(Report rep) {
+		this.rep = rep;
+	}
+
 }

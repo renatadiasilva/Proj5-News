@@ -64,6 +64,10 @@ public class ObjectFactory {
      * Create an instance of {@link Report }
      * 
      */
+    public Report createReport() {
+    	return new Report();
+    }
+    
     public Report createReport(List<MetricData> metricData, BigInteger timestamp,
  			String timezone, BigDecimal version) {
         return new Report(metricData, timestamp, timezone, version);
