@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ns2:class xmlns:h="http://www.laune.at/med" xmlns:ns2="http://www.myexample.com/classstudent">
+    <ns2:student id="201134441110">
+        <ns2:name>Alberto</ns2:name>
+        <ns2:age>21</ns2:age>
+    </ns2:student>
+    <ns2:student id="201134441116">
+        <ns2:name>Patricia</ns2:name>
+        <ns2:age>22</ns2:age>
+    </ns2:student>
+    <ns2:student id="201134441210">
+        <ns2:name>Luis</ns2:name>
+        <ns2:age>21</ns2:age>
+    </ns2:student>
+</ns2:class>

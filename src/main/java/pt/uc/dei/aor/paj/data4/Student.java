@@ -1,4 +1,4 @@
-package pt.uc.dei.aor.paj.data2;
+package pt.uc.dei.aor.paj.data4;
 
 //import javax.persistence.criteria.CriteriaBuilder.In;
 import javax.xml.bind.annotation.XmlAccessType;
@@ -16,16 +16,13 @@ import javax.xml.bind.annotation.XmlType;
     "name",
     "age"
 })
+//@XmlProcessingInstruction(target="array", value="bob")
 @XmlRootElement(name = "metric_data")
 public class Student {
 
-//	@XmlAttribute(name ="xmlns", required = true)
-//	protected String xmlns = "";
-
-	@XmlAttribute(name = "id", required = true)
+    @XmlAttribute(name = "id", required = true)
     protected Long id;
-
-	@XmlElement(required = true)
+    @XmlElement(required = true)
 //    @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
 //    @XmlSchemaType(name = "NCName")
     protected String name;

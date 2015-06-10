@@ -1,11 +1,10 @@
-package pt.uc.dei.aor.paj.data2;
+package pt.uc.dei.aor.paj.data3;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
@@ -17,11 +16,8 @@ import javax.xml.bind.annotation.XmlType;
 @XmlRootElement(name = "class")
 public class Class1 {
 	
-//	@XmlAttribute(name ="xmlns", required = true)
-//	protected String xmlns = "http://www.dei.uc.pt/EAI";
-	
 	//private?
-	@XmlElement(name = "student", required = true)
+	@XmlElement(name = "student", namespace = "http://www.myexample.com/classstudent")
     protected List<Student> students;
 
 	public Class1() {

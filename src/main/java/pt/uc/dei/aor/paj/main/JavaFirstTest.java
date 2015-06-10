@@ -7,9 +7,9 @@ import java.util.List;
 
 import javax.xml.bind.JAXBException;
 
-import pt.uc.dei.aor.paj.data2.Class1;
-import pt.uc.dei.aor.paj.data2.Student;
-import pt.uc.dei.aor.paj.xml.JavaFirstHandler2;
+import pt.uc.dei.aor.paj.data4.Class1;
+import pt.uc.dei.aor.paj.data4.Student;
+import pt.uc.dei.aor.paj.xml.JavaFirstHandler3;
 
 public class JavaFirstTest {
 	public static void main(String[] args) {
@@ -38,8 +38,8 @@ public class JavaFirstTest {
 
 		try {
 			//Marshalling: Writing Java object to XML file
-			JavaFirstHandler2.marshal(cla, new File("C:\\Users\\Renata\\Desktop\\projeto5\\Proj5-News\\classStudent.xml"));
-			JavaFirstHandler2.marshalToConsole(cla);
+			JavaFirstHandler3.marshal(cla, new File("C:\\Users\\Renata\\Desktop\\projeto5\\Proj5-News\\classStudent5.xml"));
+			JavaFirstHandler3.marshalToConsole(cla);
 
 			//Unmarshalling: Converting XML content to Java objects
 //			Report rep2 = JAXBXMLHandler.unmarshal(new File("C:\\Users\\Renata\\Desktop\\report.xml"));
