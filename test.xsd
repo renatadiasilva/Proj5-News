@@ -5,7 +5,13 @@
       <xs:sequence>
         <xs:element maxOccurs="unbounded" ref="metric_data"/>
       </xs:sequence>
-      <xs:attribute name="timestamp" use="required" type="xs:integer"/>
+      <xs:attribute name="timestamp" use="required">
+      	<xs:simpleType>
+      		<xs:restriction base="xs:integer">
+				<xs:minExclusive value="0"/>
+      		</xs:restriction>
+      	</xs:simpleType>
+      </xs:attribute>
       <xs:attribute name="timezone" use="required" type="xs:NCName"/>
       <xs:attribute name="version" use="required" type="xs:decimal"/>
     </xs:complexType>
@@ -14,12 +20,25 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element ref="metric_name"/>
-        <xs:element ref="timestamp"/>
+        <xs:element name="timestamp" >
+        	<xs:simpleType>
+        		<xs:restriction base="xs:integer">
+					<xs:minExclusive value="0"/>
+        		</xs:restriction>
+        	</xs:simpleType>
+        </xs:element>
         <xs:element ref="value"/>
         <xs:element ref="type"/>
         <xs:element ref="units"/>
         <xs:element ref="spoof"/>
-        <xs:element ref="direction"/>
+        <xs:element name="direction">
+        	<xs:simpleType>
+        		<xs:restriction base="xs:string">
+        			<xs:enumeration value="dgsg|boinc"/>
+        			<xs:enumeration value="dgsg|xtremweb"/>
+        		</xs:restriction>
+        	</xs:simpleType>
+        </xs:element>
       </xs:sequence>
     </xs:complexType>
   </xs:element>
