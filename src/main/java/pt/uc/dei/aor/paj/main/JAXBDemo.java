@@ -1,58 +1,57 @@
-package pt.uc.dei.aor.paj.bean;
-
-import javax.enterprise.context.SessionScoped;
-//import javax.inject.Inject;
-import javax.inject.Named;
-import javax.xml.bind.JAXBContext;
-import javax.xml.bind.JAXBException;
-import javax.xml.bind.Marshaller;
-
-import pt.uc.dei.aor.paj.MetricData;
-import pt.uc.dei.aor.paj.Report;
-import pt.uc.dei.aor.paj.xml.JAXBXMLHandler;
+package pt.uc.dei.aor.paj.main;
 
 import java.io.File;
 import java.io.IOException;
-import java.io.Serializable;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
 
-@Named
-@SessionScoped
-public class Teste implements Serializable {
-	
-	private static final long serialVersionUID = -5381236051617076780L;
-	
-	private String cnn;
-	
-	private Report rep;
-	
-	public Teste() {
+import javax.xml.bind.JAXBException;
+
+import pt.uc.dei.aor.paj.MetricData;
+import pt.uc.dei.aor.paj.Report;
+import pt.uc.dei.aor.paj.xml.JAXBXMLHandler;
+
+public class JAXBDemo {
+	public static void main(String[] args) {
+
 		MetricData metricD = new MetricData();
 		metricD.setMetricName("cpus_available");
 		metricD.setTimestamp(BigInteger.valueOf(Long.parseLong("1308046204003")));
 		metricD.setValue(BigDecimal.valueOf(0.0));
 		metricD.setType("unit32");
-		metricD.setUnits("cpus");
 		metricD.setSpoof("EDGITest|fusion:EDGITest|fusion");
 		metricD.setDirection("dgsg|boinc");
 		
 		List<MetricData> listMD = new ArrayList<MetricData>();
 		listMD.add(metricD);
 		
+		metricD = new MetricData();
+		metricD.setMetricName("gflops");
+		metricD.setTimestamp(BigInteger.valueOf(Long.parseLong("1308046204056")));
+		metricD.setValue(BigDecimal.valueOf(0.0));
+		metricD.setType("float");
+		metricD.setSpoof("EDGITest|fusion:EDGITest|fusion");
+		metricD.setDirection("dgsg|boinc");
+		listMD.add(metricD);
+		
+		metricD = new MetricData();
+		metricD.setMetricName("past_workunits");
+		metricD.setTimestamp(BigInteger.valueOf(Long.parseLong("1308046204058")));
+		metricD.setValue(BigDecimal.valueOf(0.0));
+		metricD.setType("unit32");
+		metricD.setUnits("wus");
+		metricD.setSpoof("EDGITest|fusion:EDGITest|fusion");
+		metricD.setDirection("dgsg|boinc");
+		listMD.add(metricD);
+
 		BigInteger ts = BigInteger.valueOf(Long.parseLong("1308046204104"));
 		String tz = "GMT";
 		BigDecimal vers = BigDecimal.valueOf(1.1);
 		
-		rep = new Report(listMD, ts, tz, vers);
-		
-	}
-	
-	public String demo() {
+		Report rep = new Report(listMD, ts, tz, vers);
 
-		cnn = "CNN!!!";
 		try {
 			//Marshalling: Writing Java object to XML file
 			JAXBXMLHandler.marshal(rep, new File("C:\\Users\\Renata\\Desktop\\report.xml"));
@@ -68,28 +67,5 @@ public class Teste implements Serializable {
 			e.printStackTrace();
 		}
 		
-		return null;
-	}    
-
-	public String doSomething() {
-		cnn = "CNN!!!";
-		return null;
 	}
-
-	public String getCnn() {
-		return cnn;
-	}
-
-	public void setCnn(String cnn) {
-		this.cnn = cnn;
-	}
-
-	public Report getRep() {
-		return rep;
-	}
-
-	public void setRep(Report rep) {
-		this.rep = rep;
-	}
-
 }

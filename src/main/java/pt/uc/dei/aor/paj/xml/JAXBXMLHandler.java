@@ -26,16 +26,27 @@ public class JAXBXMLHandler {
         m.marshal(rep, writer);
         writer.close();
     }
+    
+    // Export: Marshalling to Console
+    public static void marshalToConsole(Report rep)
+            throws IOException, JAXBException {
+        JAXBContext context;
+        context = JAXBContext.newInstance(Report.class);
+        Marshaller m = context.createMarshaller();
+        m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+        m.marshal(rep, System.out);
+    }
+
  
     // Import: Unmarshalling
     public static Report unmarshal(File importFile) throws JAXBException {
-        Report metricD = null;
+        Report report = null;
         JAXBContext context;
  
         context = JAXBContext.newInstance(Report.class);
         Unmarshaller um = context.createUnmarshaller();
-        metricD = (Report) um.unmarshal(importFile);
+        report = (Report) um.unmarshal(importFile);
  
-        return metricD;
+        return report;
     }
 }

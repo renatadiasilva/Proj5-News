@@ -186,6 +186,7 @@ public class Report {
     	int i = 1;
     	for (MetricData md: metricData) {
     		out += i+": "+md+"\n";
+    		i++;
     	}
     	
     	return out;
