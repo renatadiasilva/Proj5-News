@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+	elementFormDefault="qualified" 
+	targetNamespace="http://www.dei.uc.pt/EAI" 
+	xmlns:h="http://www.dei.uc.pt/EAI">
+  <xs:element name="class">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="h:student"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="student">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="name" form="unqualified" type="xs:NCName"/>
+        <xs:element name="age" form="unqualified" type="xs:integer"/>
+      </xs:sequence>
+      <xs:attribute name="id" use="required" type="xs:integer"/>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

@@ -21,16 +21,16 @@ public class JavaFirstHandler3 {
 	        JAXBContext context;
 	        BufferedWriter writer1 = null;
 	        writer1 = new BufferedWriter(new FileWriter(selectedFile));
-	        writer1.write("<?xml version=\"1.0\" encoding=\"UTF-8\"?>");
-	        writer1.newLine();
-  	        writer1.write("<?xml-stylesheet type=\"text/xsl\" href=\"text.xsl\"?>");
-	        writer1.newLine();
+//	        writer1.write("<?xml version=\"1.0\" encoding=\"UTF-8\"?>");
+//	        writer1.newLine();
+//  	        writer1.write("<?xml-stylesheet type=\"text/xsl\" href=\"text.xsl\"?>");
+//	        writer1.newLine();
 	        context = JAXBContext.newInstance(Class1.class);
 	        Marshaller m = context.createMarshaller();
 //	        javax.xml.bind.annotation
-//	        m.setProperty("com.sun.xml.bind.xmlHeaders", 
-//	        	    "<?xml-stylesheet type='text/xsl' href='text.xsl' ?>");
-	        m.setProperty(Marshaller.JAXB_FRAGMENT, true);
+	        m.setProperty("com.sun.xml.internal.bind.xmlHeaders", 
+	        	    "\n<?xml-stylesheet type=\"text/xsl\" href=\"text.xsl\"?>");
+//	        m.setProperty(Marshaller.JAXB_FRAGMENT, true);
 	        m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
 	        m.marshal(cla, writer1);
 	        writer1.close();
@@ -55,6 +55,8 @@ public class JavaFirstHandler3 {
 	        JAXBContext context;
 	        context = JAXBContext.newInstance(Class1.class);
 	        Marshaller m = context.createMarshaller();
+	        m.setProperty("com.sun.xml.internal.bind.xmlHeaders", 
+	        	    "\n<?xml-stylesheet type=\"text/xsl\" href=\"text.xsl\"?>");
 	        m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
 	        m.marshal(cla, System.out);
 	    }

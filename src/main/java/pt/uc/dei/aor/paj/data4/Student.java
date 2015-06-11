@@ -16,7 +16,6 @@ import javax.xml.bind.annotation.XmlType;
     "name",
     "age"
 })
-//@XmlProcessingInstruction(target="array", value="bob")
 @XmlRootElement(name = "metric_data")
 public class Student {
 

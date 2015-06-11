@@ -1,6 +1,6 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<?xml-stylesheet type="text/xsl" href="text.xsl"?>
-<h:class xmlns:h="http://www.myexample.com/classstudent">
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+
+<?xml-stylesheet type="text/xsl" href="text.xsl" ?><h:class xmlns:h="http://www.myexample.com/classstudent">
     <h:student id="201134441110">
         <name>Alberto</name>
         <age>21</age>
