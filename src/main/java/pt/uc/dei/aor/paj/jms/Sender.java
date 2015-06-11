@@ -28,5 +28,6 @@ public class Sender {
 
 	public static void main(String[] args) throws NamingException {
 		Sender s = new Sender();
+		s.send("Outra mensagem!!");
 	}
 }
