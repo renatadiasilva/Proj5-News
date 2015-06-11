@@ -1,7 +1,5 @@
 package pt.uc.dei.aor.paj.jmsQ;
 
-import java.io.*;
-
 import javax.jms.*;
 import javax.naming.*;
 public class QReceiver implements MessageListener {
@@ -23,7 +21,8 @@ public class QReceiver implements MessageListener {
 			Queue queue = (Queue) initContext.lookup(queueName);
 			initContext.close();
 			//Create JMS objects
-			QueueConnection connection = factory.createQueueConnection();
+//			QueueConnection connection = factory.createQueueConnection();
+			QueueConnection connection = factory.createQueueConnection("joao", "pedro");
 			QueueSession session =
 					connection.createQueueSession(false, Session.AUTO_ACKNOWLEDGE);
 			QueueReceiver receiver = session.createReceiver(queue);

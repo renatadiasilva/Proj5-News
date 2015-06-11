@@ -20,7 +20,8 @@ public class QSender {
 			Queue queue = (Queue) initContext.lookup(queueName);
 			initContext.close();
 			//Create JMS objects
-			QueueConnection connection = factory.createQueueConnection();
+//			QueueConnection connection = factory.createQueueConnection();
+			QueueConnection connection = factory.createQueueConnection("joao","pedro");
 			QueueSession session =
 					connection.createQueueSession(false, Session.AUTO_ACKNOWLEDGE);
 			QueueSender sender = session.createSender(queue);
