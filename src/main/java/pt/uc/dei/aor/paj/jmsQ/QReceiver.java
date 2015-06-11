@@ -12,14 +12,10 @@ public class QReceiver implements MessageListener {
 	}
 
 	public void receive() {
-		BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 		try {
 			//Prompt for JNDI names
-			System.out.println("Enter QueueConnectionFactory name:");
-			String factoryName = reader.readLine();
-			System.out.println("Enter Queue name:");
-			String queueName = reader.readLine();
-			reader.close();
+			String factoryName = "jms/RemoteConnectionFactory";
+			String queueName = "jms/queue/PlayQueue";
 			//Look up administered objects
 			InitialContext initContext = new InitialContext();
 			QueueConnectionFactory factory =

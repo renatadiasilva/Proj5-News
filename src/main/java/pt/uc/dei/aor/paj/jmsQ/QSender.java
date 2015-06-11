@@ -3,21 +3,16 @@ package pt.uc.dei.aor.paj.jmsQ;
 import java.io.*;
 import javax.jms.*;
 import javax.naming.*;
-
 public class QSender {
-	
 	public static void main(String[] args) {
 		new QSender().send();
 	}
-	
 	public void send() {
 		BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 		try {
 			//Prompt for JNDI names
-			System.out.println("Enter QueueConnectionFactory name:");
-			String factoryName = reader.readLine();
-			System.out.println("Enter Queue name:");
-			String queueName = reader.readLine();
+			String factoryName = "jms/RemoteConnectionFactory";
+			String queueName = "jms/queue/PlayQueue";
 			//Look up administered objects
 			InitialContext initContext = new InitialContext();
 			QueueConnectionFactory factory =
