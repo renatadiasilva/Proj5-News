@@ -14,7 +14,6 @@ import javax.naming.NamingException;
 
 public class Subscriber2 implements MessageListener {
 	private ConnectionFactory cf;
-//	private Destination d;
 	private Topic t;
 
 	private boolean stop = false;
@@ -27,7 +26,7 @@ public class Subscriber2 implements MessageListener {
 	private void subscribe() throws JMSException {
 		try (JMSContext jcontext = cf.createContext("joao", "pedro");) {
 			jcontext.setClientID("user2");
-			JMSConsumer mc = jcontext.createDurableConsumer(t, "user2", "(Content = 'Stats')", true);
+			JMSConsumer mc = jcontext.createDurableConsumer(t, "user2", "Content = 'Stats'", true);
 			mc.setMessageListener(this);
 			//Wait for stop
 			while (!stop) {
