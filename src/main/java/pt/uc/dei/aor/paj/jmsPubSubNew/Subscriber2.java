@@ -12,21 +12,22 @@ import javax.jms.Topic;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 
-public class Subscriber implements MessageListener {
+public class Subscriber2 implements MessageListener {
 	private ConnectionFactory cf;
+//	private Destination d;
 	private Topic t;
 
 	private boolean stop = false;
 
-	public Subscriber() throws NamingException {
+	public Subscriber2() throws NamingException {
 		this.cf = InitialContext.doLookup("jms/RemoteConnectionFactory");
 		this.t = InitialContext.doLookup("jms/topic/PlayTopic");
 	}
 
 	private void subscribe() throws JMSException {
 		try (JMSContext jcontext = cf.createContext("joao", "pedro");) {
-			jcontext.setClientID("user1");
-			JMSConsumer mc = jcontext.createDurableConsumer(t, "user1", "Content = 'HTML'", true);
+			jcontext.setClientID("user2");
+			JMSConsumer mc = jcontext.createDurableConsumer(t, "user2", "(Content = 'Stats')", true);
 			mc.setMessageListener(this);
 			//Wait for stop
 			while (!stop) {
@@ -43,7 +44,7 @@ public class Subscriber implements MessageListener {
 	}
 
 	public static void main(String[] args) throws NamingException, JMSException {
-		Subscriber r = new Subscriber();
+		Subscriber2 r = new Subscriber2();
 		r.subscribe();
 	}
 

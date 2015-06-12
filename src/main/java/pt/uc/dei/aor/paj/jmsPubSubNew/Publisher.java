@@ -5,25 +5,24 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 import javax.jms.ConnectionFactory;
-import javax.jms.Destination;
 import javax.jms.JMSContext;
 import javax.jms.JMSException;
 import javax.jms.JMSProducer;
 import javax.jms.JMSRuntimeException;
+import javax.jms.Topic;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 
 public class Publisher {
 	private ConnectionFactory cf;
-	private Destination d;
+	private Topic t;
 
 	public Publisher() throws NamingException {
 		this.cf = InitialContext.doLookup("jms/RemoteConnectionFactory");
-		this.d = InitialContext.doLookup("jms/topic/PlayTopic");
+		this.t = InitialContext.doLookup("jms/topic/PlayTopic");
 	}
 
-//  ver Exceptions
-//	private void publish(String text) throws JMSException {	
+//  ver Exceptions (tirar throws)
 	private void publish() throws JMSException {
 		BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 		try (JMSContext jcontext = cf.createContext("joao", "pedro");) {
@@ -34,9 +33,13 @@ public class Publisher {
 			while (true) {
 				System.out.println("Enter message to send or 'quit':");
 				messageText = reader.readLine();
+				System.out.println("Subscriber 1 ou 2? ");
+				int i = Integer.parseInt(reader.readLine());
 				if ("quit".equals(messageText))
 					break;
-				mp.send(d, messageText);
+				if (i == 1) mp.setProperty("Content", "HTML");
+				else mp.setProperty("Content", "Stats");
+				mp.send(t, messageText);
 			}
 			//Exit
 			System.out.println("Exiting...");
