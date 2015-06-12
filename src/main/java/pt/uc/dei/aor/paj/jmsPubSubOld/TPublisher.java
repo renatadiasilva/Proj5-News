@@ -14,7 +14,6 @@ public class TPublisher {
 			//Prompt for JNDI names
 			String factoryName = "jms/RemoteConnectionFactory";
 			String topicName = "jms/topic/PlayTopic";
-//			String topicName = "TOPICO";
 			//Look up administered objects
 			InitialContext initContext = new InitialContext();
 			TopicConnectionFactory factory =

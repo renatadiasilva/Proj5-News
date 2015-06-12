@@ -1,7 +1,5 @@
 package pt.uc.dei.aor.paj.jmsPubSubOld;
 
-import java.io.*;
-
 import javax.jms.*;
 import javax.naming.*;
 
@@ -15,7 +13,6 @@ public class TSubscriber implements MessageListener {
 			//Prompt for JNDI names
 			String factoryName = "jms/RemoteConnectionFactory";
 			String topicName = "jms/topic/PlayTopic";
-//			String topicName = "TOPICO";
 			//Look up administered objects
 			InitialContext initContext = new InitialContext();
 			TopicConnectionFactory factory =
