@@ -4,7 +4,6 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.StringWriter;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
@@ -28,8 +27,10 @@ public class JavaFirstHandler3 {
 	        context = JAXBContext.newInstance(Class1.class);
 	        Marshaller m = context.createMarshaller();
 //	        javax.xml.bind.annotation
+	        
 	        m.setProperty("com.sun.xml.internal.bind.xmlHeaders", 
 	        	    "\n<?xml-stylesheet type=\"text/xsl\" href=\"text.xsl\"?>");
+
 //	        m.setProperty(Marshaller.JAXB_FRAGMENT, true);
 	        m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
 	        m.marshal(cla, writer1);
